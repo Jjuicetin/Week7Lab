@@ -31,7 +31,7 @@ public class ConnectionPool {
     }
     return pool;
     }
-    
+    //connect 2 database
     public Connection getConnection() {
     try {
     return dataSource.getConnection();
