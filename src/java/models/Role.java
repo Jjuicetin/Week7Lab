@@ -1,45 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
-import java.beans.*;
 import java.io.Serializable;
 
-/**
- *
- * @author puppi
- */
+
 public class Role implements Serializable {
-    
-    public static final String PROP_SAMPLE_PROPERTY = "sampleProperty";
-    
-    private String sampleProperty;
-    
-    private PropertyChangeSupport propertySupport;
-    
-    public Role() {
-        propertySupport = new PropertyChangeSupport(this);
+   int roleID;
+   String roleName;
+
+   public Role(int roleID) {
+       this.roleID = roleID;
+       this.roleName = null;
+   }
+
+    public Role(int roleID, String roleName) {
+        this.roleID = roleID;
+        this.roleName = roleName;
     }
-    
-    public String getSampleProperty() {
-        return sampleProperty;
+
+    public int getRoleID() {
+        return roleID;
     }
-    
-    public void setSampleProperty(String value) {
-        String oldValue = sampleProperty;
-        sampleProperty = value;
-        propertySupport.firePropertyChange(PROP_SAMPLE_PROPERTY, oldValue, sampleProperty);
+
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
     }
-    
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        propertySupport.addPropertyChangeListener(listener);
+
+    public String getRoleName() {
+        return roleName;
     }
-    
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        propertySupport.removePropertyChangeListener(listener);
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
-    
+
 }
