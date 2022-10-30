@@ -27,7 +27,6 @@ public class RoleDB {
     PreparedStatement preStatement = null;
     ResultSet resultSet = null;
     
-    
     public ArrayList<Role> getAllRoles() throws SQLException{
         String selectAll = "Select * from role;";
         //arraylist to store user 

@@ -16,20 +16,7 @@
     <body>
         <h1>Manage Users</h1>
             <p4>Use a for loop using the cloop to print out each element in the arraylist. </p4>
-            <table>
-                <th>Email</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Role</th>
-              
-                <c:forEach var="user" items="${users}">
-                    <tr>
-                        <td>${user.email}</td>
-                        <td>${user.firstName}</td>
-                        <td>${user.lastName}</td>
-                        <td>${user.role.roleName}</td>
-                        </tr>
-            </table>
+            
             
             
             
@@ -41,7 +28,7 @@
              Last name: <input type="text" name="lname" required> <br>
              Password: <input type="password" name="password" required> <br>
              Role: <select name="roles" required>
-                 <option value="sysadmin">system admin</option
+                 <option value="sysadmin">system admin</option>
                  <option value="regular">regular user</option>
              </select>
              <br>

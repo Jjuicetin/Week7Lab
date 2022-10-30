@@ -5,9 +5,8 @@
  */
 package servlets;
 
-import dataaccess.UserDB;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -56,7 +55,15 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+        
+        UserService userService = new UserService();
+        String action = request.getParameter("action");
+
+        String email = request.getParameter("email");
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String password = request.getParameter("password");
+        String userRole = request.getParameter("roles");
     }
 
   
