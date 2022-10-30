@@ -18,7 +18,7 @@ import models.User;
  * @author puppi
  */
 public class RoleDB {
-    
+   
     //connect 2 database
     ConnectionPool pool = ConnectionPool.getInstance();
     Connection connection = pool.getConnection();
@@ -28,7 +28,7 @@ public class RoleDB {
     ResultSet resultSet = null;
     
     
-    public ArrayList<Role> getAllUser() throws SQLException{
+    public ArrayList<Role> getAllRoles() throws SQLException{
         String selectAll = "Select * from role;";
         //arraylist to store user 
         ArrayList<Role> roles = new ArrayList<>();
@@ -39,8 +39,8 @@ public class RoleDB {
            resultSet = preStatement.executeQuery();
            
            while(resultSet.next()){
-               int roleID = resultSet.getInt(0);
-               String roleName = resultSet.getString(1);
+               int roleID = resultSet.getInt(1);
+               String roleName = resultSet.getString(2);
                
                Role role = new Role(roleID, roleName);
                roles.add(role);
@@ -54,4 +54,36 @@ public class RoleDB {
         }
         return roles;
     }
-}
+    
+    public String getRoleNames(int roleID) throws SQLException{
+        
+        String string = "SELECT role_name from role WHERE role_id = ?;";
+        String result;
+        
+        try{
+            preStatement = connection.prepareStatement(string);
+            preStatement.setInt(1, roleID);
+           resultSet = preStatement.executeQuery();
+           
+           //only giving one answer so its best to not loop this.
+            resultSet.next();
+            result = resultSet.getString(1);
+           
+        }
+        
+        finally{
+            close();
+            
+        }
+         return result;
+
+        }
+     private void close() {
+        DBUtil.closePreparedStatement(preStatement);
+        pool.freeConnection(connection);
+        if (resultSet != null) {
+            DBUtil.closeResultSet(resultSet);
+        }
+    }
+    }
+

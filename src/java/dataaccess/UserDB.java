@@ -18,6 +18,8 @@ import models.User;
  * @author puppi
  */
 public class UserDB {
+     //getAllUser() returns an array
+    //getUser(email) returns a user object
     
     //connect 2 database
     ConnectionPool pool = ConnectionPool.getInstance();
@@ -69,7 +71,7 @@ public class UserDB {
         preStatement = connection.prepareStatement(searchUser);
         //The ? becomes email as input
         preStatement.setString(1, email);
-        //run sql
+        //run select sql
         resultSet = preStatement.executeQuery();
         
         if(resultSet.next()){
